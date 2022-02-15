@@ -34,14 +34,12 @@ class Network(nn.Module):
             h1 = self.nonlin(self.fc1(x)) # f.relu(self.fc1(x)) (1x24 and 14x16)
 
             h2 = self.nonlin(self.fc2(h1))
-            h3 = F.tanh(self.fc3(h2))
-            
-
+            h3 = f.tanh(self.fc3(h2))
             return h3
         
         else:
             # critic network simply outputs a number
             h1 = self.nonlin(self.fc1(x))
             h2 = self.nonlin(self.fc2(h1))
-            h3 = self.nonlin(self.fc3(h2))
-            return h3
+            #h3 = self.nonlin()
+            return self.fc3(h2)
